@@ -10,14 +10,14 @@ datasets:
   test_1:  # the 1st test dataset
     name: dataset_dame
     type: RefCUFEDDataset
-    dataroot_in: path-to-input-data
-    dataroot_ref: path-to-input-data
+    dataroot_in: E:\CodeProjects\super_resolution\dataset\CUFED_SRNTT\CUFED5
+    dataroot_ref: E:\CodeProjects\super_resolution\dataset\CUFED_SRNTT\CUFED5
     io_backend:
       type: disk
 
     bicubic_model: PIL
 
-    ann_file: path-to-ann-files
+    ann_file: ./datasets/CUFED5_pairs_Multi.txt
 
 val_func: BasicSRValidation
 save_img: true

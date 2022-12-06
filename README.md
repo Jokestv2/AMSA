@@ -14,16 +14,22 @@ The code framework is mainly modified from [BasicSR](https://github.com/xinntao/
 
 ## Dependencies and Installation
 
-- Python >= 3.7
-- PyTorch == 1.4
-- CUDA 10.0 
-- GCC 5.4.0
+- Python == 3.9.7
+- PyTorch == 1.9.0
+- CUDA >= 10.2
+- GCC >= 7.5.0
 
+
+0. Create Conda Environment
+   ```bash
+   conda create --prefix ./amsa_cu111 python=3.9.7
+   conda activate ./amsa_cu111
+   ```
 1. Install Dependencies
 
    ```bash
    cd AMSA
-   conda install pytorch=1.4.0 torchvision cudatoolkit=10.0 -c pytorch
+   pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
    pip install mmcv==0.4.4
    pip install -r requirements.txt
    ```
@@ -31,9 +37,9 @@ The code framework is mainly modified from [BasicSR](https://github.com/xinntao/
 1. Install MMSR and DCNv2
 
     ```bash
-    python setup.py develop
+    python setup.py develop --user
     cd mmsr/models/archs/DCNv2
-    python setup.py build develop
+    python setup.py build develop --user
     ```
 
 
@@ -48,7 +54,7 @@ Please refer to [Datasets.md](datasets/DATASETS.md) for pre-processing and more 
 
 ### Pretrained Models
 Downloading the pretrained models from [GoogleDrive](https://drive.google.com/drive/folders/1XWv1O8l3-_VBWXRoPVV183ddYS31u-2_?usp=sharing) and put them under `experiments/pretrained_models folder`.
-
+(part of the pretrained models are from this [link](https://drive.google.com/drive/folders/1dTkXMzeBrHelVQUEx5zib5MdmvqDaSd9?usp=sharing))
 ### Test
 
 We provide quick test code with the pretrained model.
@@ -56,14 +62,14 @@ We provide quick test code with the pretrained model.
 1. Modify the paths to dataset and pretrained model in the following yaml files for configuration.
 
     ```bash
-    ./options/test/test_C2_matching.yml
-    ./options/test/test_C2_matching_mse.yml
+    ./options/test/test_AMSA.yml
+    ./options/test/test_AMSA_mse.yml
     ```
 
 1. Run test code for models trained using **GAN loss**.
 
     ```bash
-    python mmsr/test.py -opt "options/test/test_C2_matching.yml"
+    python mmsr/test.py -opt "options/test/test_AMSA.yml"
     ```
 
    Check out the results in `./results`.
@@ -71,7 +77,7 @@ We provide quick test code with the pretrained model.
 1. Run test code for models trained using only **reconstruction loss**.
 
     ```bash
-    python mmsr/test.py -opt "options/test/test_C2_matching_mse.yml"
+    python mmsr/test.py -opt "options/test/test_AMSA_mse.yml"
     ```
 
    Check out the results in in `./results`
