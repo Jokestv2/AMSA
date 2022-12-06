@@ -7,17 +7,17 @@ This project is the official implementation of 'Coarse-to-Fine Embedded PatchMat
 
 ## Dependencies and Installation
 
-- Python >= 3.7
-- PyTorch == 1.4
-- CUDA 10.0 
-- GCC 5.4.0
+- Python == 3.9.7
+- PyTorch == 1.9.0
+- CUDA >= 10.2
+- GCC >= 7.5.0
 
 
 1. Install Dependencies
 
    ```bash
-   cd C2-Matching
-   conda install pytorch=1.4.0 torchvision cudatoolkit=10.0 -c pytorch
+   cd AMSA
+   pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
    pip install mmcv==0.4.4
    pip install -r requirements.txt
    ```
@@ -25,9 +25,9 @@ This project is the official implementation of 'Coarse-to-Fine Embedded PatchMat
 1. Install MMSR and DCNv2
 
     ```bash
-    python setup.py develop
+    python setup.py develop --user
     cd mmsr/models/archs/DCNv2
-    python setup.py build develop
+    python setup.py build develop --user
     ```
 
 
